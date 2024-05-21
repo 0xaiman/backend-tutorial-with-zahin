@@ -1,0 +1,15 @@
+{
+  "name": "expressjs",
+  "version": "1.0.0",
+  "description": "test around nodejs using expressjs module",
+  "main": "index.js",
+  "scripts": {
+    "dev":"node --watch index.js",
+    "start":"node index.js"
+  },
+  "author": "aiman",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
