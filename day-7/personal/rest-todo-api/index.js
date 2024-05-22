@@ -12,6 +12,8 @@ import inputTodo from "./database/todo.controller/create.js";
 import readTodo from "./database/todo.controller/read.js";
 import deleteTodo from "./database/todo.controller/delete.js";
 import updateStatus from "./database/todo.controller/update.js";
+import loginUser from "./database/auth.js";
+import isAuth from "./middleware/isAuth.js";
 
 const app = express();
 const PORT = 8787;
@@ -34,11 +36,13 @@ app.delete('/users/:id',deleteUser);
 
 app.post('/register',createUser);
 
+app.post('/login',loginUser);
+
 //TODO conttrollers
-app.post('/todos',inputTodo);
-app.get('/todos/:id',readTodo);
-app.put('/todos',updateStatus);
-app.delete('/todos/:id',deleteTodo);
+app.post('/todos',isAuth,inputTodo);
+app.get('/todos/',isAuth,readTodo);
+app.put('/todos',isAuth,updateStatus);
+app.delete('/todos/:id',isAuth,deleteTodo);
 
 //404 response
 

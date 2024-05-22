@@ -14,7 +14,10 @@ async function inputTodo(req,res){
 ///try catch
     try{
         const text = req.body.text;
-        const userId = req.body.user_id;
+        const userId = res.locals.userId;
+
+        console.log("user Id is : ",res.locals.userId)
+        console.log("user email is : ",res.locals.userEmail)
 
 
         //validations
@@ -32,6 +35,7 @@ async function inputTodo(req,res){
         })
 
     }catch(error){
+        console.log(error)
         res.status(500).json({
             
             message:"500:Internal Server Error"
