@@ -8,6 +8,10 @@ import createUser from "./database/user.controller/create.js";
 import { readAllUsers, readUserById } from "./database/user.controller/read.js";
 import updateUserById from "./database/user.controller/update.js";
 import  deleteUser  from "./database/user.controller/delete.js";
+import inputTodo from "./database/todo.controller/create.js";
+import readTodo from "./database/todo.controller/read.js";
+import deleteTodo from "./database/todo.controller/delete.js";
+import updateStatus from "./database/todo.controller/update.js";
 
 const app = express();
 const PORT = 8787;
@@ -22,11 +26,20 @@ testConnect();
 //a GET health controller
 app.get('/',healthCheck.get);
 app.post('/',healthCheck.post);
-app.post('/users',createUser);
+// app.post('/users',createUser);
 app.get('/users',readAllUsers);
 app.get('/users/:id',readUserById);
 app.put('/users/:id',updateUserById);
 app.delete('/users/:id',deleteUser);
+
+app.post('/register',createUser);
+
+//TODO conttrollers
+app.post('/todos',inputTodo);
+app.get('/todos/:id',readTodo);
+app.put('/todos',updateStatus);
+app.delete('/todos/:id',deleteTodo);
+
 //404 response
 
 app.use(notFound);

@@ -46,7 +46,7 @@ async function createUser(req,res){
         await pool.query(query,[username,hashedPassword,email,isAdmin]);
         
         res.status(201).json({
-            message:"User has been created"
+            message:   `entry for the user " ${username.toUpperCase()} " has been registered`
         })
     }catch(error){
         res.status(500).json({
